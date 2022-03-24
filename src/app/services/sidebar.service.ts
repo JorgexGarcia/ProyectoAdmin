@@ -7,7 +7,7 @@ export class SidebarService {
 
   menu: any[] = [
     {
-      titulo: 'Principal!!!',
+      titulo: 'Principal',
       icon: 'mdi mdi-gauge',
       subMenu: [
         {
@@ -21,6 +21,10 @@ export class SidebarService {
         {
           titulo: 'Gráficas',
           url: '/dashboard/grafica1'
+        },
+        {
+          titulo: 'Promesas',
+          url: '/dashboard/promesas'
         },
       ]
     }
