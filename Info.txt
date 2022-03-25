@@ -1,0 +1,70 @@
+- Observable y Promesas:
+    -Promesas:
+        - ejemplo: 
+            //Creo una promesa con una función, resolve es lo que devuelve si todo sale bien, 
+                reject, lo que devuelve si sale mal
+                    const promesa = new Promise( (resolve, reject) => {
+                        if(false){
+                        resolve('Hola')
+                        }else{
+                        reject('Error')
+                        }
+                    });
+            //Ya puedo llamar a la promesa en la apicación, con el .then() recojo lo que tenga en el resolve,
+                Con el .catch() recojo lo que tiene en caso de fallo
+                    promesa.then( (mensaje) => {
+                    console.log(mensaje);
+                    })
+                    .catch( error => console.log('Error', error))
+                    .finally(() => console.log('Siempre se ejecuta'));
+        -En la página de promesas, hay un ejemplo práctico de promesa, para traer una información de una api
+
+
+    -Observable:
+        -ejemplo :
+            //Una constante observable termina con simbolo dolar, el .complete() para terminar el proceso
+                el .next() para enviar el valor en cada cambio al subscribe
+            //Cuando te .subscribe(), dentro de el hay tres campos separados por comas, 1 el valor de cada cambio,
+                despúes el error si tiene, y por ultimo que hacer cuando se completa. El .error() para enviar un error
+            const obs$ = new Observable(observer => {
+                let i = -1;
+                const intervalo = setInterval( () => {
+                    i++;
+                    observer.next(i);
+                    if( i === 5 ){
+                        clearInterval(intervalo);
+                        observer.complete();
+                    }
+                    if( i === 2 ){
+                        observer.error('i llego a dos');
+                    }
+                },1000);
+
+            });
+            obs$.subscribe(
+                valor => console.log('Subs', valor),
+                error => console.warn('Error', error),
+                () => console.info('Obs terminado')
+            );
+        .unsubcribe() = cancelar el observable, se puede llamar cuando destruyes la ventana (implementar Ondestroy)
+        .pipe() se pone antes del subscribe para hacer acciones antes
+            .retry(NumVeces), dentro del pipe, es para repetir el subscribe sin cancelar, en el ejemplo de antes, 
+                despúes del error , vuelve a seguir y alcanza el 5 
+            .map() para transformar la respuesta de un observable
+            .take() para decirle las veces que vas a realizar
+            .filter() = para filtrar lo que nos interesa de la respuesta
+                - ejemplo : filter(valor => (valor % 2 === 0)? true : false) , solo deja pasar los que cumplan el true
+
+- .json() = Variable.json() = para transformar en un json
+
+- Routerlink: se utiliza para moverte por las páginas de la apliación.
+    routerLinkActive="active" = Con esto marca en el navegador si la página esta activa
+    [routerLinkActiveOptions]="{exact : true}"> = Con esto le obliga que sea exactamente igual
+
+-Intervalo: es para cantadores de tiempo. Si lo igualas a una const, ya puedes llamarlo para cancelarlo 
+    const intervalo = setInterval( () => { 
+    },1000);
+    clearInterval(intervalo);
+
+-Rutas { path: '', component: DashboardComponent, data: {titulo: 'Dashboard'} }, el data es para enviar información ,
+-Sacartitulo en breadcrumbs hay un ejemplo

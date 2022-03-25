@@ -13,6 +13,7 @@ import { Grafica1Component } from './grafica1/grafica1.component';
 import { PagesComponent } from './pages.component';
 import { AccountSettingComponent } from './account-setting/account-setting.component';
 import { PromesasComponent } from './promesas/promesas.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 
 
@@ -25,6 +26,7 @@ import { PromesasComponent } from './promesas/promesas.component';
     PagesComponent,
     AccountSettingComponent,
     PromesasComponent,
+    RxjsComponent,
   ],
   exports: [
     DashboardComponent,
