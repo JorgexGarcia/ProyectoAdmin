@@ -18,6 +18,13 @@ File: scss
 /*******************
 Login register and recover password Page
 ******************/
+#botonGoogle{
+  align-items: center;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
 .login-register {
     background-size: cover;
     background-repeat: no-repeat;
