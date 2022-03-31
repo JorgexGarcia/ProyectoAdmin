@@ -68,3 +68,4 @@
 
 -Rutas { path: '', component: DashboardComponent, data: {titulo: 'Dashboard'} }, el data es para enviar información ,
 -Sacartitulo en breadcrumbs hay un ejemplo
+-NGZone, en los ts que te pida

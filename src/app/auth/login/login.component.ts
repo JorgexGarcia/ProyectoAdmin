@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuarioService } from '../../services/usuario.service';
@@ -26,7 +26,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private router: Router,
-              private usuarioService: UsuarioService) { }
+              private usuarioService: UsuarioService,
+              private ngZone: NgZone) { }
 
   ngOnInit(): void {
     this.renderButton();
@@ -75,7 +76,9 @@ export class LoginComponent implements OnInit {
           const id_token = googleUser.getAuthResponse().id_token;
           this.usuarioService.loginGoogle(id_token).subscribe( resp => {
               //Ir a Inicio
-              this.router.navigateByUrl('/');
+              this.ngZone.run(() => {
+                this.router.navigateByUrl('/');
+              })
           });
         }, (error) => {
           alert(JSON.stringify(error, undefined, 2));
