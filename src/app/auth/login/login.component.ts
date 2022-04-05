@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
         Swal.fire('Error', err.error.msg, 'error')
       })
   }
-  
+
   renderButton() {
     gapi.signin2.render('my-signin2', {
       'scope': 'profile email',
