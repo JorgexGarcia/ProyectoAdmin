@@ -15,13 +15,17 @@ export class Usuario{
     ){}
 
   get imagenUrl():string{
-      //Si ya tengo url de imagen
-      if(this.img.includes('https')) return this.img;
 
-      //Si no tengo url de img
-      if(this.img){
+      if(!this.img){
+        return `${apiUrl}/upload/usuarios/noImg`;
+      }else if(this.img.includes('https')){
+        //Si ya tengo url de imagen
+        return this.img;
+      }else if(this.img){
+        //Si no tengo url de img
         return `${apiUrl}/upload/usuarios/${this.img}`;
+      }else{
+        return `${apiUrl}/upload/usuarios/noImg`;
       }
-      return `${apiUrl}/upload/usuarios/noImg`;
   }
 }
