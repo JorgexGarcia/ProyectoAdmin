@@ -11,10 +11,10 @@ import { Subscription } from 'rxjs';
 })
 export class BreadcrumbsComponent implements OnInit {
 
-  public titulo: string = '';
+  public titulo = '';
   public tituloSub: Subscription;
 
-  constructor(private router: Router) { 
+  constructor(private router: Router) {
     this.tituloSub = this.getTitulo()
       .subscribe(({titulo}) => {
         this.titulo = titulo;

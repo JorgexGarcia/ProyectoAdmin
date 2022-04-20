@@ -1,19 +1,17 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Router} from "@angular/router";
-import {Observable} from "rxjs";
-import {map} from "rxjs/operators";
-import {environment} from "../../environments/environment";
-import {Hospital} from "../models/hospital.model";
+import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+import {environment} from '../../environments/environment';
+import {Hospital} from '../models/hospital.model';
 
-const base_url = environment.BASE_URL;
+const BASE_URL = environment.BASE_URL;
 
 @Injectable({
   providedIn: 'root'
 })
 export class HospitalesService {
-
-
 
   constructor(private http: HttpClient,
               private router: Router) { }
@@ -24,21 +22,19 @@ export class HospitalesService {
 
   get headers(){
     return {
-      headers:{
+      headers: {
         'x-token': this.token
       }
-    }
+    };
   }
 
   cargarHospitales(): Observable<Hospital[]>{
 
-    const url = `${base_url}/hospitales`;
+    const url = `${BASE_URL}/hospitales`;
 
     return this.http.get(url , this.headers)
       .pipe(
-        map((resp: {ok: boolean, hospitales: Hospital[]} )=> resp.hospitales)
+        map((resp: {ok: boolean, hospitales: Hospital[]} ) => resp.hospitales)
       );
-
-    //TODO 218
   }
 }
