@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {environment} from '../../environments/environment';
@@ -13,8 +12,7 @@ const BASE_URL = environment.BASE_URL;
 })
 export class HospitalesService {
 
-  constructor(private http: HttpClient,
-              private router: Router) { }
+  constructor(private http: HttpClient) { }
 
   get token(): string{
     return localStorage.getItem('token') || '';
@@ -36,5 +34,26 @@ export class HospitalesService {
       .pipe(
         map((resp: {ok: boolean, hospitales: Hospital[]} ) => resp.hospitales)
       );
+  }
+
+  crearHospital(nombre: string){
+
+    const url = `${BASE_URL}/hospitales`;
+
+    return this.http.post(url , {nombre}, this.headers);
+  }
+
+  actualizarHospital(nombre: string, id: string){
+
+    const url = `${BASE_URL}/hospitales/${id}`;
+
+    return this.http.put(url , {nombre}, this.headers);
+  }
+
+  eliminarHospital(id: string){
+
+    const url = `${BASE_URL}/hospitales/${id}`;
+
+    return this.http.delete(url , this.headers);
   }
 }

@@ -14,7 +14,8 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "allowedCommonJsDependencies": [
-              "lodash"
+              "lodash",
+              "chart.js"
             ],
             "outputPath": "dist/adminpro",
             "index": "src/index.html",

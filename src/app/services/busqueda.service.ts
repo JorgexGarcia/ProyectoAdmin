@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {map} from "rxjs/operators";
 import {Usuario} from "../models/usuario.model";
 import {environment} from "../../environments/environment";
+import {Hospital} from '../models/hospital.model';
 
 const base_url = environment.BASE_URL;
 
@@ -48,9 +49,15 @@ export class BusquedaService {
           switch (tipo){
             case 'usuarios':
               return this.transformarUsuarios(resp.resultados);
+            case 'hospitales':
+              return this.transformarHospitales(resp.resultados);
           }
         })
       );
 
+  }
+
+  private transformarHospitales(resultados: Hospital[]): Hospital[] {
+    return resultados;
   }
 }
