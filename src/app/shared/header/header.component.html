@@ -42,9 +42,15 @@
                 <!-- ============================================================== -->
                 <!-- Search -->
                 <!-- ============================================================== -->
-                <li class="nav-item hidden-xs-down search-box"> <a class="nav-link hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
-                    <form class="app-search">
-                        <input type="text" class="form-control" placeholder="Search & enter"> <a class="srh-btn"><i class="ti-close"></i></a> </form>
+                <li class="nav-item hidden-xs-down search-box">
+                  <a class="nav-link hidden-sm-down waves-effect waves-dark"
+                     href="javascript:void(0)">
+                    <i class="ti-search"></i></a>
+                    <form class="app-search" (submit)="buscar(txtTermino.value)">
+                        <input type="text" class="form-control" placeholder="Buscar ..." #txtTermino>
+                      <a class="srh-btn"><i class="ti-close"></i>
+                      </a>
+                    </form>
                 </li>
                 <!-- ============================================================== -->
                 <!-- Comment -->
@@ -177,7 +183,7 @@
                                         {{email | slice: 0:20 }}
                                         {{(email.length > 20) ? '...' : ''}}
                                       </p>
-                                      <a href="pages-profile.html"
+                                      <a href=""
                                          class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
                                 </div>
                             </li>

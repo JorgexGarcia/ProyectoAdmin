@@ -1,0 +1,105 @@
+<div class="row ">
+  <div class="col-4">
+    <div class="card">
+      <div class="card-body">
+
+        <h3>Usuarios</h3>
+
+        <div class="alert alert-info" *ngIf="usuarios.length == 0">
+          <h4 class="alert-heading">No hay usuarios en la busqueda</h4>
+        </div>
+
+        <div class="table-responsive" *ngIf="usuarios.length > 0">
+          <table class="table">
+            <thead>
+            <tr>
+              <th>Avatar</th>
+              <th>Nombre</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of usuarios">
+              <td>
+                <img src="{{item.img | img :'usuarios'}}"
+                class="avatar w75"
+                alt="Avatar Usuario">
+              </td>
+              <td>{{item.nombre}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card">
+      <div class="card-body">
+
+        <h3>Médicos</h3>
+
+        <div class="alert alert-info" *ngIf="medicos.length == 0">
+          <h4 class="alert-heading">No hay médicos en la busqueda</h4>
+        </div>
+
+        <div class="table-responsive" *ngIf="medicos.length > 0">
+          <table class="table">
+            <thead>
+            <tr>
+              <th>Avatar</th>
+              <th>Nombre</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of medicos">
+              <td>
+                <img src="{{item.img | img :'medicos'}}"
+                     class="avatar w75"
+                     alt="Avatar Médico">
+              </td>
+              <td>
+                <a [routerLink]="['../../medico', item._id]">
+                  {{item.nombre}}
+                </a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card">
+      <div class="card-body">
+
+        <h3>Hospitales</h3>
+
+        <div class="alert alert-info" *ngIf="hospitales.length == 0">
+          <h4 class="alert-heading">No hay hospitales en la busqueda</h4>
+        </div>
+
+        <div class="table-responsive" *ngIf="hospitales.length > 0">
+          <table class="table">
+            <thead>
+            <tr>
+              <th>Avatar</th>
+              <th>Nombre</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of hospitales">
+              <td>
+                <img src="{{item.img | img :'hospitales'}}"
+                     class="avatar w75"
+                     alt="Avatar hospital">
+              </td>
+              <td>{{item.nombre}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

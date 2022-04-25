@@ -11,8 +11,6 @@ import {Usuario} from "../../models/usuario.model";
 })
 export class SidebarComponent implements OnInit {
 
-  menuItem: any[];
-
   private _usuario: Usuario;
 
   get nombre(){
@@ -23,9 +21,8 @@ export class SidebarComponent implements OnInit {
     return this._usuario.imagenUrl;
   }
 
-  constructor(private sidebarService: SidebarService,
+  constructor(public sidebarService: SidebarService,
               private userService: UsuarioService) {
-    this.menuItem = sidebarService.menu;
     this._usuario = userService.usuario;
   }
 

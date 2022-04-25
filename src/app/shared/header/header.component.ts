@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
 import {Usuario} from "../../models/usuario.model";
-import {SidebarService} from "../../services/sidebar.service";
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -26,7 +26,7 @@ export class HeaderComponent {
     return this._usuario.email;
   }
 
-  constructor(
+  constructor(private router: Router,
               private userService: UsuarioService) {
     this._usuario = userService.usuario;
   }
@@ -35,4 +35,10 @@ export class HeaderComponent {
     this.userService.logout();
   }
 
+  buscar(termino: string) {
+    if(termino.length === 0 ){
+      return;
+    }
+    this.router.navigateByUrl(`/dashboard/busqueda/${termino}`);
+  }
 }
