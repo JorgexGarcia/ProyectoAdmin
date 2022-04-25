@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {HospitalesService} from "../../../services/hospitales.service";
 import {Hospital} from '../../../models/hospital.model';
 import Swal from 'sweetalert2';
@@ -13,7 +13,7 @@ import {BusquedaService} from '../../../services/busqueda.service';
   styles: [
   ]
 })
-export class HospitalesComponent implements OnInit {
+export class HospitalesComponent implements OnInit, OnDestroy {
 
   public hospitales: Hospital[] = [];
   public cargando: boolean = true;
@@ -35,6 +35,10 @@ export class HospitalesComponent implements OnInit {
         this.cargarHospitales();
       })
 
+  }
+
+  ngOnDestroy(): void {
+    this.cambioImagen.unsubscribe();
   }
 
   buscar (termino:string){
